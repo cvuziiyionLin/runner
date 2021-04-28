@@ -1,5 +1,5 @@
 ## mysql创建utf-8字符集数据库姚鸿杰
-##CREATE DATABASE test DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+##CREATE DATABASE runner DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 spring:
   datasource:  #设置数据源
     driver-class-name: com.mysql.jdbc.Driver #驱动程序
