@@ -56,6 +56,5 @@ public class HttpAspect {
         logger.info("response="+ objectMapper.writeValueAsString(obj));
     }
 
-
 }
 
