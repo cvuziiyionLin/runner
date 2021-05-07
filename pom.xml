@@ -11,7 +11,6 @@
     <!--项目的子模块-->
     <modules>
         <module>runner-core</module>
-        <module>runnerapi</module>
         <module>runner-admin</module>
         <module>runner-web</module>
         <module>runner-api</module>
