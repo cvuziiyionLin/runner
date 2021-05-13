@@ -1,5 +1,6 @@
 package com.yaohongjie.runner.core.domain;
 
+import lombok.Data;
 
 import javax.persistence.*;
 
@@ -7,13 +8,14 @@ import javax.persistence.*;
  * 系统管理员实体类
  */
 @Entity
+@Data
 @Table(name = "at_manager")
 public class Manager {
 
     @Id
     @GeneratedValue
     private Long id;
-    @Column(length = 50)
+    @Column(length = 50, unique = true)
     private String username;
 
     @Column(length = 50)
@@ -26,51 +28,9 @@ public class Manager {
 
     private Integer status;
 
-    public Long getId() {
-        return id;
-    }
+    public Manager(){}
 
-    public void setId(Long id) {
+    public Manager(Long id){
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 }

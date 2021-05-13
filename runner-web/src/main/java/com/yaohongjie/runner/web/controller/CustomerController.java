@@ -1,22 +1,40 @@
 package com.yaohongjie.runner.web.controller;
 
 import com.yaohongjie.runner.core.domain.Customer;
-import com.yaohongjie.runner.core.service.impl.CustomerServiceImpl;
+import com.yaohongjie.runner.core.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
-
-@RestController
-@RequestMapping(value = "/customer")
+@Controller
+@RequestMapping("/customer")
 public class CustomerController {
-
     @Autowired
-    private CustomerServiceImpl customerService;
+    private CustomerService customerService;
 
-    @PostMapping(value = "/register")
-    public Customer register(@Valid Customer customer) {
-        return customerService.register(customer);
+    //http://localhost:8089/customer/login
+    @GetMapping("/login")
+    public String login(){
+        return "customer/login";
     }
+    @PostMapping("/login")
+    public String login(@RequestParam String username, @RequestParam String password){
+        Customer customer = customerService.login(username, password);
+
+        System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111");
+        if (customer == null){
+            //登录不成功,跳转到错误页面
+            return "customer/error";
+        }else{
+            //把用户数据存放session中
+
+            //登录成功，跳转到首页
+            return "customer/index";
+        }
+    }
+
 
 }
