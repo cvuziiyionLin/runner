@@ -16,7 +16,7 @@ import java.util.Date;
 import javax.persistence.Transient;
 
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -26,8 +26,7 @@ public class OrderServiceImpl implements OrderService{
     @Transient
     @Override
     public Order create(Order order, Long customerId) {
-        //
-        //Customer customer = customerRespository.findOne(customerId);
+
 //      谁下单、哪个时间下单
         Customer customer = customerRepository.findOne(customerId);
 

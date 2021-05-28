@@ -100,35 +100,37 @@
     </style>
 
 </head>
+
 <body>
 <form class="form-signin" th:action="@{/publiz/register}" method="post">
     <div class="text-center mb-4">
         <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
-        <h1 class="h3 mb-3 font-weight-normal">注册页面</h1>
+        <h1 class="h3 mb-3 font-weight-normal">用户注册</h1>
+        <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a
+                href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a>
+        </p>
+        <div th:if="${errorMsg} != null" class="alert alert-danger" th:text="${errorMsg}"></div>
     </div>
-
     <div class="form-label-group">
-        <input type="text" id="username" name="username" class="form-control" placeholder="Email address" />
-        <label for="username">用户账户</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Email address"/>
+        <label for="username">登录账号</label>
     </div>
-
     <div class="form-label-group">
-        <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Password"/>
+        <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Email address"/>
         <label for="nickname">用户昵称</label>
     </div>
 
     <div class="form-label-group">
-        <input type="password" id="password" name="password" class="form-control" placeholder="Email address" />
-        <label for="password">用户密码</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password"/>
+        <label for="password">登录密码</label>
     </div>
-
     <div class="form-label-group">
-        <input type="number" id="mobile" name="mobile" class="form-control" placeholder="Password"/>
-        <label for="mobile">用户手机</label>
+        <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Email address"/>
+        <label for="mobile">手机号码</label>
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">注 册</button>
-
+    <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
 </form>
 </body>
 </html>

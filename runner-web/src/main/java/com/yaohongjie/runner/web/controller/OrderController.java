@@ -48,10 +48,52 @@ public class OrderController {
                              @RequestParam String goods,
                              HttpSession session) {
 
+        //3.调用下单方法
+        Order result = createOrder(store,consignee,consigneeMobile,goods,session);
 
+        if (result != null){
+            return "order/success";
+        }else{
+            return "publiz/error";
+        }
+    }
+
+    /**
+     * 进入帮我送下单页面
+     *
+     * @return
+     */
+    @GetMapping("/addForDeliver")
+    public String addForDeliver() {
+        return "order/addForDeliver";
+    }
+
+    /**
+     * 执行帮我送下单操作，跳转到下单成功页面
+     *
+     * @return
+     */
+    @PostMapping("/addForDeliver")
+    public String addForDeliver(@RequestParam String pickupAddress,
+                                @RequestParam String consignee,
+                                @RequestParam String consigneeMobile,
+                                @RequestParam String goods,
+                                HttpSession session) {
+
+        Order result = createOrder(pickupAddress,consignee,consigneeMobile,goods,session);
+
+        if (result != null){
+            return "order/success";
+        }else{
+            return "publiz/error";
+        }
+    }
+
+    private Order createOrder(String pickupAddress,String consignee,String consigneeMobile,
+                              String goods,HttpSession session){
         //1.order数据来自表单
         Order order = new Order();
-        order.setStore(store);
+        order.setStore(pickupAddress);
         order.setConsignee(consignee);
         order.setConsigneeMobile(consigneeMobile);
         order.setGoods(goods);
@@ -62,32 +104,9 @@ public class OrderController {
         //3.调用下单方法
         Order result = orderService.create(order, customer.getId());
 
-        if (result != null){
-            return "order/success";
-        }else{
-            return "publiz/error";
-        }
-
-
+        return result;
     }
 
-    /**
-     * 进入帮我送下单页面
-     *
-     * @return
-     */
-    public String addForDeliver() {
-        return null;
-    }
-
-    /**
-     * 执行帮我送下单操作，跳转到下单成功页面
-     *
-     * @return
-     */
-    public String addForDeliver(String store, String consignee, String consigneeMobile, String goods) {
-        return "order/success";
-    }
 
     /**
      * 进入帮我取下单页面
