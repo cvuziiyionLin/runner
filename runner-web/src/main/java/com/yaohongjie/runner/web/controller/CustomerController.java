@@ -24,7 +24,6 @@ public class CustomerController {
     public String login(@RequestParam String username, @RequestParam String password){
         Customer customer = customerService.login(username, password);
 
-        System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111");
         if (customer == null){
             //登录不成功,跳转到错误页面
             return "customer/error";
